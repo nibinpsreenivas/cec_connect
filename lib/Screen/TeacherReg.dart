@@ -104,6 +104,16 @@ class _TeacherScreenState extends State<TeacherScreen> {
       autofocus: false,
       controller: UIDNameEditingController,
       keyboardType: TextInputType.name,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Please Enter Your Email");
+        }
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]+.[a-z]")
+            .hasMatch(value)) {
+          return ("Please Enter a valid Mail");
+        }
+        return null;
+      },
       onSaved: (value) {
         UIDNameEditingController.text = value!;
       },
@@ -123,6 +133,16 @@ class _TeacherScreenState extends State<TeacherScreen> {
       autofocus: false,
       controller: phoneController,
       keyboardType: TextInputType.number,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{10,10}');
+        if (value!.isEmpty) {
+          return ("Please Enter phone number");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Please Enter 10 digit in it");
+        }
+        return null;
+      },
       onSaved: (value) {
         phoneController.text = value!;
       },
@@ -158,6 +178,16 @@ class _TeacherScreenState extends State<TeacherScreen> {
       controller: passwordEditingController,
       obscureText: true,
       keyboardType: TextInputType.name,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Please Enter Password");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid Password (Min. 6 Character)");
+        }
+        return null;
+      },
       onSaved: (value) {
         passwordEditingController.text = value!;
       },
@@ -367,7 +397,11 @@ class _TeacherScreenState extends State<TeacherScreen> {
     });
     String res = "Some error occured";
     try {
-      if (email.isNotEmpty || password.isNotEmpty) {
+      if (_formKey.currentState!.validate()) {
+        setState(() {
+          isLoading = true;
+        });
+        //if (email.isNotEmpty || password.isNotEmpty) {
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
         print(cred.user!.uid);

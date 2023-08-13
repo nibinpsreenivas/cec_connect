@@ -40,6 +40,8 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          // Adjust this value as needed
+          elevation: 0.0,
           backgroundColor: Color.fromARGB(255, 252, 69, 104),
           title: Text("CEC BOT"),
         ),

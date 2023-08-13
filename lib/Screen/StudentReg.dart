@@ -385,7 +385,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     String role = "user";
     String res = "Some error occured";
     try {
-      if (email.isNotEmpty || password.isNotEmpty) {
+      if (_formKey.currentState!.validate()) {
+        setState(() {
+          isLoading = true;
+        });
+        // else if(email.isNotEmpty || password.isNotEmpty) {
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
         print(cred.user!.uid);

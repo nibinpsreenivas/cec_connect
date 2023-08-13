@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=C:\Users\nimit\OneDrive\Documents\flutter"
-export "FLUTTER_APPLICATION_PATH=C:\Users\nimit\OneDrive\Desktop\project\cec_connect beta"
+export "FLUTTER_APPLICATION_PATH=C:\Users\nimit\Downloads\CEC-CONNECT-main\CEC-CONNECT-main"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"

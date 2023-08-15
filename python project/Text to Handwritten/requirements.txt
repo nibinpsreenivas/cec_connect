@@ -1,2 +1,0 @@
-Pillow==7.1.2
-pywhatkit==4.7

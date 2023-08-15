@@ -26,6 +26,7 @@ class _ProfileScreen2State extends State<ProfileScreen2> {
     super.initState();
     getData();
   }
+  printf("hello");
 
   getData() async {
     setState(() {
